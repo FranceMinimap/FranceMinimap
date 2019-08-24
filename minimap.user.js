@@ -6,9 +6,9 @@
 // @author       olegispe#2453
 // @match        https://pixelzone.io/*
 // @match        http://pixelzone.io/*
-// @homepage     
-// @updateURL    
-// @downloadURL  
+// @homepage     https://github.com/FranceMinimap/FranceMinimap/
+// @updateURL    https://raw.githubusercontent.com/FranceMinimap/FranceMinimap/master/minimap.user.js
+// @downloadURL  https://raw.githubusercontent.com/FranceMinimap/FranceMinimap/master/minimap.user.js
 // @grant        none
 // ==/UserScript==
 
