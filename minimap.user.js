@@ -18,7 +18,7 @@ Number.prototype.between = function(a, b) {
   return this > min && this < max;
 };
 
-window.baseTepmlateUrl = '';
+window.baseTepmlateUrl = 'https://raw.githubusercontent.com/FranceMinimap/FranceMinimap/master/';
 
 window.addEventListener('load', function () {
     //Regular Expression to get coordinates out of URL
