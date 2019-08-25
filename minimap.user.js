@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Minimap française
+// @name         FranceZone Minimap
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      2.0
 // @description  Minimap pour la France sur Pixelzone.io
 // @author       France
 // @match        https://pixelzone.io/*
@@ -52,12 +52,19 @@ window.addEventListener('load', function () {
     //Cachebreaker to force refresh
     cachebreaker = null;
 
+
+	//FranceZone info
+	vers = "FranceZone Minimap 2.0 ";
+
+
     var div = document.createElement('div');
     div.setAttribute('class', 'post block bc2');
-    div.innerHTML = '<div id="minimapbg" style="position: absolute; right: 0.6em; bottom: 0.6em; z-index: 2;">' +
-        '<div class="posy" id="posyt" style="background-size: 100%; background-image: url(); color: rgb(255, 255, 255); text-align: center; line-height: 42px; vertical-align: middle; width: auto; height: auto; border-radius: 12px; padding: 10px;">' +
+    div.innerHTML = '<div id="minimapbg" style="position: absolute; right: 1em; bottom: 1em;"><div class="posy" id="posyt" style="background-color: rgba(0, 0, 0, 0.75); color: rgb(250, 250, 250); text-align: center; line-height: 42px; vertical-align: middle; width: auto; height: auto; border-radius: 21px; padding: 9px;"><div id="minimap-text" style="display: none;"></div><div id="minimap-title" style="line-height: 12px; font-size: 0.9em; display: block; cursor: pointer;">' + vers + '</div><div id="minimap-box" style="position: relative;width:420px;height:300px"><canvas id="minimap" style="width: 100%; height: 100%;z-index:1;position:absolute;top:0;left:0;"></canvas><canvas id="minimap-board" style="width: 100%; height: 100%;z-index:2;position:absolute;top:0;left:0;"></canvas><canvas id="minimap-cursor" style="width: 100%; height: 100%;z-index:3;position:absolute;top:0;left:0;"></canvas></div><div id="minimap-config" style="line-height:20px;"><span id="hide-map" style="cursor:pointer;">Cacher</span> | <span id="follow-mouse" style="cursor:pointer;">Suivre la souris</span> | <span id="discord" style="cursor:pointer;">Discord</span> | Zoom: <span id="zoom-plus" style="cursor:pointer;font-weight:bold;">+</span>  /  <span id="zoom-minus" style="cursor:pointer;font-weight:bold;">-</span></div></div>'
+	document.body.appendChild(div);
+        '<div class="posy" id="posyt" style="background-color: rgba(0, 0, 0, 0.75); color: rgb(250, 250, 250); text-align: center; line-height: 42px; vertical-align: middle; width: auto; height: auto; border-radius: 21px; padding: 6px;">' +
         '<div id="minimap-text" style="display: none;"></div>' +
         '<div id="minimap-box" style="position: relative;width:400px;height:300px">' +
+        '<div id="minimap-title" style="line-height: 12px; font-size: 0.9em; display: block; cursor: pointer;">' + vers + '</div>' +
         '<canvas id="minimap" style="width: 100%; height: 100%;z-index:1;position:absolute;top:0;left:0;"></canvas>' +
         '<canvas id="minimap-board" style="width: 100%; height: 100%;z-index:2;position:absolute;top:0;left:0;"></canvas>' +
         '<canvas id="minimap-cursor" style="width: 100%; height: 100%;z-index:3;position:absolute;top:0;left:0;"></canvas>' +
@@ -99,7 +106,7 @@ window.addEventListener('load', function () {
         document.getElementById("minimap-box").style.display = "none";
         document.getElementById("minimap-config").style.display = "none";
         document.getElementById("minimap-text").style.display = "block";
-        document.getElementById("minimap-text").innerHTML = "Mostrar";
+        document.getElementById("minimap-text").innerHTML = "Montrer";
         document.getElementById("minimap-text").style.cursor = "pointer";
     };
     document.getElementById("minimap-text").onclick = function () {
@@ -127,6 +134,9 @@ window.addEventListener('load', function () {
     }, false);
     document.getElementById("zoom-minus").addEventListener('mouseup', function (e) {
         zooming_out = false;
+    }, false);
+    document.getElementById("discord").addEventListener('mouseup', function RedirectionJavascript() {
+        window.open("https://www.discord.io/FranceZone", "_blank");
     }, false);
     document.getElementById("follow-mouse").onclick = function () {
         toggle_follow = !toggle_follow;
